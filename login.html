@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - CivicTrack</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white min-h-screen flex items-center justify-center font-sans">
+  <div class="border border-green-400 rounded-lg p-8 w-full max-w-md bg-gray-900 shadow-lg">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold text-green-400">CivicTrack</h1>
+      <a href="index.html" class="px-4 py-1 border border-green-400 rounded-full text-green-400 hover:bg-green-400 hover:text-black">Home</a>
+    </div>
+    <form>
+      <label class="block mb-4">
+        <span class="text-lg">User Name</span>
+        <input type="text" class="mt-1 w-full px-3 py-2 bg-black border border-gray-600 rounded text-white" />
+      </label>
+      <label class="block mb-4">
+        <span class="text-lg">Password</span>
+        <input type="password" class="mt-1 w-full px-3 py-2 bg-black border border-gray-600 rounded text-white" />
+      </label>
+      <p class="mb-4 text-sm">Don't have an account? <a href="register.html" target="_blank" class="text-blue-400 underline">Register here</a></p>
+      <button type="submit" class="px-6 py-2 border border-green-400 rounded-full text-green-400 hover:bg-green-400 hover:text-black">Login</button>
+    </form>
+  </div>
+</body>
+</html>

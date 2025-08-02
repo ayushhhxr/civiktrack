@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-[Inter]">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-semibold cursor-pointer" onclick="location.href='index.html'">CivicTrack</h1>
+    <nav>
+      <a href="login.html" target="_blank" class="text-blue-600 hover:underline mr-4">Login</a>
+      <a href="register.html" target="_blank" class="text-blue-600 hover:underline mr-4">Register</a>
+      <a href="report.html" target="_blank" class="text-purple-600 hover:underline">Report Issue</a>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main class="p-4 max-w-6xl mx-auto" id="home">
+    <div class="flex justify-between items-center mb-4">
+      <div class="space-x-2">
+        <button class="px-3 py-1 bg-blue-100 rounded">Categories</button>
+        <button class="px-3 py-1 bg-blue-100 rounded">Status</button>
+        <button class="px-3 py-1 bg-blue-100 rounded">Distance</button>
+      </div>
+      <input type="text" placeholder="Search Issues" class="border p-2 rounded w-1/3" />
+    </div>
+
+    <!-- Report Button -->
+    <div class="flex justify-end mb-6">
+      <a href="report.html" target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+        Report New Issue
+      </a>
+    </div>
+
+    <!-- Issues Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="#" onclick="openIssue('issue.html?id=1')" class="block hover:scale-105 transition-transform duration-200">
+        <div class="bg-white rounded shadow p-4">
+          <img src="ph1.jpg" class="rounded mb-2" alt="Issue Image" />
+          <h2 class="font-semibold">Pothole on main road</h2>
+          <p class="text-sm text-gray-600">Roads • 2 km away</p>
+          <p class="text-sm mt-1">Reported 2 days ago • In Progress</p>
+        </div>
+      </a>
+
+      <a href="#" onclick="openIssue('issue.html?id=2')" class="block hover:scale-105 transition-transform duration-200">
+        <div class="bg-white rounded shadow p-4">
+          <img src="sl1.jpg" class="rounded mb-2" alt="Issue Image" />
+          <h2 class="font-semibold">Streetlight not working</h2>
+          <p class="text-sm text-gray-600">Lighting • 1 km away</p>
+          <p class="text-sm mt-1">Reported 1 day ago • Reported</p>
+        </div>
+      </a>
+
+      <a href="#" onclick="openIssue('issue.html?id=3')" class="block hover:scale-105 transition-transform duration-200">
+        <div class="bg-white rounded shadow p-4">
+          <img src="go1.jpg" class="rounded mb-2" alt="Issue Image" />
+          <h2 class="font-semibold">Garbage overflow</h2>
+          <p class="text-sm text-gray-600">Cleanliness • 3 km away</p>
+          <p class="text-sm mt-1">Reported 5 hours ago • Resolved</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <!-- JavaScript for Popup -->
+  <script>
+    function openIssue(url) {
+      window.open(
+        url,
+        '_blank',
+        'width=800,height=600,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'
+      );
+    }
+  </script>
+</body>
+</html>

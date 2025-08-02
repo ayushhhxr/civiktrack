@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issue Detail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white font-[Inter]">
+  <!-- Header -->
+  <header class="bg-gray-900 p-4 flex justify-between items-center">
+    <h1 class="text-xl font-semibold cursor-pointer" onclick="window.close()">CivicTrack</h1>
+    <div class="space-x-4">
+      <button class="text-sm hover:underline">Edit</button>
+      <button class="text-sm hover:underline">Delete</button>
+    </div>
+  </header>
+
+  <!-- Filters -->
+  <div class="flex flex-wrap gap-2 p-4">
+    <select class="bg-gray-800 text-white px-3 py-1 rounded">
+      <option>Category</option>
+    </select>
+    <select class="bg-gray-800 text-white px-3 py-1 rounded">
+      <option>Status</option>
+    </select>
+    <select class="bg-gray-800 text-white px-3 py-1 rounded">
+      <option>Distance</option>
+    </select>
+    <input type="text" placeholder="search Issues" class="bg-gray-800 text-white px-3 py-1 rounded w-1/2 ml-auto" />
+  </div>
+
+  <!-- Dynamic Issue Content -->
+  <section class="p-4 space-y-6" id="issueContainer"></section>
+
+  <script>
+    const issues = {
+      1: {
+        title: "Pothole on main road",
+        image: "ph1.jpg",
+        status: "In Progress",
+        reporter: "Anonymous",
+        date: "Jun 02, 2025 – 10:34 AM",
+        description: "The main road in C.G road, Ahmedabad, is riddled with potholes, making it dangerous and difficult to travel on.",
+        location: "C.G road, Ahmedabad, Gujarat",
+        map: "https://via.placeholder.com/300x200",
+        activity: [
+          "Jun 02, 10:34 AM — Reported by user",
+          "July 26, 09:00 AM — Assigned to municipal worker",
+          "July 28, 04:15 PM — Marked 'In Progress'"
+        ]
+      },
+      2: {
+        title: "Streetlight not working",
+        image: "sl1.jpg",
+        status: "Reported",
+        reporter: "Verified",
+        date: "Aug 01, 2025 – 08:12 PM",
+        description: "The streetlight on Sector 21 ring road has been non-functional for 2 nights, causing darkness and safety issues.",
+        location: "Sector 21, Gandhinagar, Gujarat",
+        map: "https://via.placeholder.com/300x200",
+        activity: [
+          "Aug 01, 08:12 PM — Reported by user"
+        ]
+      },
+      3: {
+        title: "Garbage overflow",
+        image: "go1.jpg",
+        status: "Resolved",
+        reporter: "Anonymous",
+        date: "Aug 02, 2025 – 06:45 AM",
+        description: "Garbage bins near ABC Chowk are overflowing and haven't been cleared for days, creating a health hazard.",
+        location: "ABC Chowk, Surat, Gujarat",
+        map: "https://via.placeholder.com/300x200",
+        activity: [
+          "Aug 02, 06:45 AM — Reported by user",
+          "Aug 02, 12:30 PM — Cleaned by municipal team"
+        ]
+      }
+    };
+
+    function renderIssue(id) {
+      const issue = issues[id];
+      if (!issue) return;
+      const container = document.getElementById("issueContainer");
+      container.innerHTML = `
+        <img src="${issue.image}" alt="${issue.title}" class="rounded w-full mb-4">
+        <div class="flex justify-between mb-2">
+          <p class="text-xl font-bold">${issue.title}</p>
+          <div>
+            <span class="text-yellow-400">Status: ${issue.status}</span><br>
+            <span class="text-sm text-gray-400">Reported by: ${issue.reporter}</span>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400 mb-1">${issue.date} <span class="text-red-500 cursor-pointer hover:underline">Report Spam</span></p>
+        <p class="mb-4">${issue.description}</p>
+        <div class="flex items-center gap-2 mb-4">
+          <span>📍</span>
+          <p class="text-sm">Location: ${issue.location}</p>
+        </div>
+        <img src="${issue.map}" alt="Map" class="rounded mb-4">
+        <div>
+          <h2 class="text-lg font-semibold mb-2">Activity</h2>
+          <ul class="list-disc list-inside text-sm text-gray-300">
+            ${issue.activity.map(entry => `<li>${entry}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const issueId = urlParams.get("id");
+    renderIssue(issueId);
+  </script>
+</body>
+</html>
